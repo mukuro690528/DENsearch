@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% include 'module/head.html' %}
+
+{% block script %}
+{% endblock %}
+
+<title>DenSearch-牙醫診所推薦系統</title>
+<body style="font-family: 微軟正黑體; background-color:#31c1ff">
+{#    {% include 'module/nav.html' %}#}
+
+    {% block body %}
+    {% endblock %}
 
 </body>
 </html>

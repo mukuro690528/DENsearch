@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from recommendation.views import survey
+from recommendation.views.views import survey
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

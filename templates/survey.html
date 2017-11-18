@@ -1,0 +1,324 @@
+{% extends 'module/base.html' %}
+
+{% block script %}
+    <script language="javascript">
+
+        function check_submit() {
+            for (var i = 1; i <= 5; i++) {
+                if ($("input[name='q" + i + "']:checked").length <= 0) {
+                    alert('還有欄位未填!');
+                    return false;
+                }
+            }
+            document.SearchForm.action = "";
+            document.SearchForm.submit();
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div align="center">
+        <div class="outer">
+            <div class="banner">
+            </div>
+            <div class="content">
+                <form method="post" name="SearchForm">
+
+                    <table width="20" border="0">
+                        <tr>
+                            <td nowrap><font size="6" face="微軟正黑體"><b><font size="5">關於Hosearch</font></b></font></td>
+                        </tr>
+                    </table>
+
+                    <table width="70" border="0">
+                        <tr>
+                            <td nowrap><font size="4" face="微軟正黑體">Hosearch是一個統整網路論壇上網友口碑的資訊系統，其主要利用語意分析技術辨識所選定<br/>
+                                範圍之醫療診所的口碑特性(正評、負評、無法判斷)，並根據每間診所的正負評數量計算該<br/>
+                                診所的整體評價，最後依據使用者對於醫療服務的個人偏好，推薦出適合個人的診所。</font></td>
+                        </tr>
+                        <tr>
+                            <td nowrap>
+                                <center><font size="4" face="微軟正黑體" color=gray> 搜尋資料來源:
+                                    2015年3月，Mobile01、批踢踢實業坊、Yahoo!奇摩知識+</font></center>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                    <p>&nbsp;</p>
+
+                    <table width="20" border="0">
+                        <tr>
+                            <td nowrap><font size="6" face="微軟正黑體"><b><font size="5">Hosearch搜尋</font></b></font></td>
+                        </tr>
+                    </table>
+
+                    <table width="70" border="0">
+                        <tr>
+                            <td nowrap><font size="4" face="微軟正黑體">
+                                <center>請輸入你想搜尋的條件:<br>Please input your search criteria below:</center>
+                            </font></td>
+                        </tr>
+                    </table>
+                    <table width="70" border="0">
+                        <tr>
+                            <td nowrap><font size="4" face="微軟正黑體">&nbsp;國家(Country):</font></td>
+                            <td class="style1"><select name="txtarea">
+                                <option value="台灣">台灣</option>
+                            </select></td>
+                            <td nowrap><font size="4" face="微軟正黑體">&nbsp;區域(Area):</font></td>
+                            <td><select name="txtarea">
+                                <option value="台北市">中壢市</option>
+                                <option value="台北市">基隆市</option>
+                                <option value="台北市">臺北市</option>
+                                <option value="台北市">新北市</option>
+                                <option value="台北市">桃園市</option>
+                                <option value="台北市">新竹縣</option>
+                                <option value="台北市">新竹市</option>
+                                <option value="台北市">苗栗縣</option>
+                                <option value="台北市">臺中市</option>
+                                <option value="台北市">南投縣</option>
+                                <option value="台北市">雲林縣</option>
+                                <option value="台北市">嘉義縣</option>
+                                <option value="台北市">嘉義市</option>
+                                <option value="台北市">臺南市</option>
+                                <option value="台北市">高雄市</option>
+                                <option value="台北市">屏東縣</option>
+                                <option value="台北市">宜蘭縣</option>
+                                <option value="台北市">花蓮縣</option>
+                                <option value="台北市">臺東縣</option>
+                                <option value="台北市">澎湖縣</option>
+                                <option value="台北市">金門縣</option>
+                                <option value="台北市">連江縣</option>
+                            </select></td>
+                            <td nowrap><font size="4" face="微軟正黑體">&nbsp;語言(Languace):</font></td>
+                            <td><select name="txtarea">
+                                <option value="台灣">繁體中文</option>
+                            </select></td>
+                        </tr>
+                    </table>
+
+                    <!--<table>
+                      <tr>
+                          <td><font size="4" face="微軟正黑體" color=red><center>註:由於此系統為測試版本，因此僅以中壢市為測試區域。<br>NOTE: This system is a beta version, only Chungli City area for testing.</center></font></td>
+                      </tr>
+                    </table>-->
+
+                    <p></p>
+                    <table width="70" border="0">
+                        <tr>
+                            <td nowrap>
+                                <center><font size="4" face="微軟正黑體">請輸入下列醫療服務要素對你選擇診所時的影響程度:<br>Please input your
+                                    preference for each service dimension of a clinic.</font></center>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table width="70" border="0">
+                        <tr>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center>
+                                    <font size="4" face="微軟正黑體">服務要素<br>Service Dimension</font>
+                                </center>
+                            </td>
+                            <td nowrap width="100" BGCOLOR=#CCFF80>
+                                <center>
+                                    <font size="4" face="微軟正黑體">非常重要<br>Very Important</font>
+                                </center>
+                            </td>
+                            <td nowrap width="100" BGCOLOR=#CCFF80>
+                                <center>
+                                    <font size="4" face="微軟正黑體">重要<br>Important</font>
+                                </center>
+                            </td>
+                            <td nowrap width="100" BGCOLOR=#CCFF80>
+                                <center>
+                                    <font size="4" face="微軟正黑體">普通<br>Moderately Important</font>
+                                </center>
+                            </td>
+                            <td nowrap width="100" BGCOLOR=#CCFF80>
+                                <center>
+                                    <font size="4" face="微軟正黑體">不重要<br>Slightly Important</font>
+                                </center>
+                            </td>
+                            <td nowrap width="100" BGCOLOR=#CCFF80>
+                                <center>
+                                    <font size="4" face="微軟正黑體">非常不重要<br>Not Important</font>
+                                </center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap width="120" BGCOLOR=#FFFF93>
+                                <center>
+                                    <font size="4" face="微軟正黑體">經濟<br>Economic</font>
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q1" value="5" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q1" value="4" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q1" value="3" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q1" value="2" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q1" value="1" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center>
+                                    <font size="4" face="微軟正黑體">時間<br>Temporal</font>
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center><input type="radio" name="q2" value="5" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center><input type="radio" name="q2" value="4" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center><input type="radio" name="q2" value="3" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center><input type="radio" name="q2" value="2" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center><input type="radio" name="q2" value="1" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center>
+                                    <font size="4" face="微軟正黑體">方便性<br>Convenience</font>
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q3" value="5" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q3" value="4" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q3" value="3" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q3" value="2" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q3" value="1" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center>
+                                    <font size="4" face="微軟正黑體">社會心理性<br>Sociopsychological</font>
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center><input type="radio" name="q4" value="5" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center><input type="radio" name="q4" value="4" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center><input type="radio" name="q4" value="3" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center><input type="radio" name="q4" value="2" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#CCFF80>
+                                <center><input type="radio" name="q4" value="1" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center>
+                                    <font size="4" face="微軟正黑體">醫療品質<br>Quality of Care</font>
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q5" value="5" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q5" value="4" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q5" value="3" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q5" value="2" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                            <td nowrap BGCOLOR=#FFFF93>
+                                <center><input type="radio" name="q5" value="1" style="width:18px;height:18px;">
+                                </center>
+                            </td>
+                        </tr>
+                    </table>
+                    </br>
+                    <table width="70" border="0">
+                        <tr>
+                            <td><font size="4" face="微軟正黑體">
+                                <crnter>說明:<br>Description:</crnter>
+                            </font></td>
+                        </tr>
+                        <tr>
+                            <td nowrap><font size="4" face="微軟正黑體"> 1. 經濟：指對於就醫價格的認知，如收費是否合理等。<br> 1. Economic includes
+                                expenses of medical care, and the like. </font></td>
+                        </tr>
+                        <tr>
+                            <td nowrap><font size="4" face="微軟正黑體"> 2. 時間性：指對於就醫時間的認知，如看診等候之時間等。<br> 2. Temporal
+                                includes waiting time for outpatients, and the like.</font></td>
+                        </tr>
+                        <tr>
+                            <td nowrap><font size="4" face="微軟正黑體"> 3. 方便性：指就醫時所感受到的方便性，如醫院距離、停車與掛號制度等。<br> 3.
+                                Convenience includes distance to hospital, parking space, and the like.</font></td>
+                        </tr>
+                        <tr>
+                            <td nowrap><font size="4" face="微軟正黑體"> 4. 社會心理性：指對社會心理性價值之效用認知，如醫師的禮貌、體諒、服務態度、醫病關係等。<br> 4.
+                                Sociopsychological includes bedside manner and physician-patient relationship, and the
+                                like.</font></td>
+                        </tr>
+                        <tr>
+                            <td nowrap><font size="4" face="微軟正黑體"> 5. 醫療品質：指對於醫療服務之效用認知，如醫師技術、經歷資格等。<br> 5. Quality of
+                                Care includes physicians' skill and experience, and the like.</font></td>
+                        </tr>
+                    </table>
+                    <h1>
+                        <input size="4" type="button" name="Submit" class="myButton" value="   Search   "
+                               onclick="check_submit();">
+                    </h1>
+                </form>
+
+                <!-- end .content --></div>
+        </div>
+    </div>
+{% endblock %}
