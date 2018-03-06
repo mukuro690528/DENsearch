@@ -1,4 +1,3 @@
-from django.shortcuts import render
 import facebook
 import requests
 from bs4 import BeautifulSoup

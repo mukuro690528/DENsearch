@@ -16,8 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from recommendation.views.views import survey
+from recommendation.views.setdatas_views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^wordscoredata/', get_WordScoredata),
+
     url(r'^survey/$', survey),
 ]
