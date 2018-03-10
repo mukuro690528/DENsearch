@@ -1,3 +1,5 @@
+# 從各大網站搜集口碑文章、留言
+
 import facebook
 import requests
 from bs4 import BeautifulSoup
@@ -48,7 +50,7 @@ def PTTCrawler():
     # print(data)
 
     workpath = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    c = os.path.join(workpath, 'static/dataset/pttWOM_Taoyuan.csv')
+    c = os.path.join(workpath, 'static/dataset/../../../static/dataset/pttWOM_Taoyuan.csv')
     with open(c, 'a', encoding='utf-8-sig', errors='ignore') as csvfile:
         fieldnames = ['name', 'content']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
