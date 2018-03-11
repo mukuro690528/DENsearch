@@ -22,7 +22,8 @@ class Hospital_Manager(models.Manager):
 class WordScore(models.Model):
     word = models.CharField(max_length=50)
     score = models.DecimalField(max_digits=4, decimal_places=3)
-    objects = WordScore_Manager()
+    type = models.CharField(max_length=10)
+    # objects = WordScore_Manager()
 
     def __str__(self):
         return smart_text(self.word) + '：' + smart_text(self.score)
@@ -39,7 +40,20 @@ class Hospital(models.Model):
 
 class HospitalScore(models.Model):
     hospital = models.OneToOneField(Hospital, related_name="hospital_detail")
-    score = models.DecimalField(max_digits=4, decimal_places=3)
+    total_WOM = models.IntegerField(default=0)
+
+    score_ec = models.DecimalField(max_digits=5, decimal_places=3, default=0)  # Economic
+    count_ec = models.IntegerField(default=0)
+    score_tem = models.DecimalField(max_digits=5, decimal_places=3, default=0)  # Temporal
+    count_tem = models.IntegerField(default=0)
+    score_con = models.DecimalField(max_digits=5, decimal_places=3, default=0)  # Convenience
+    count_con = models.IntegerField(default=0)
+    score_soc = models.DecimalField(max_digits=5, decimal_places=3, default=0)  # Sociopsychological
+    count_soc = models.IntegerField(default=0)
+    score_qua = models.DecimalField(max_digits=5, decimal_places=3, default=0)  # Quality
+    count_qua = models.IntegerField(default=0)
+    score_oth = models.DecimalField(max_digits=5, decimal_places=3, default=0)  # Other
+    count_oth = models.IntegerField(default=0)
 
     def __str__(self):
         return smart_text(self.hospital.name) + '：' + smart_text(self.score)
