@@ -57,3 +57,10 @@ class HospitalScore(models.Model):
 
     def __str__(self):
         return smart_text(self.hospital.name) + '：' + smart_text(self.score)
+
+class HospitalComment(models.Model):
+    hospital = models.ForeignKey(Hospital)
+    content = models.TextField(max_length=1000, null=False)
+
+    def __str__(self):
+        return smart_text(self.hospital.name)

@@ -47,10 +47,9 @@ def PTTCrawler():
             data[name] = data[name] + ' ' + content
         else:
             data[name] = content
-    # print(data)
 
     workpath = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    c = os.path.join(workpath, 'static/dataset/../../../static/dataset/pttWOM_Taoyuan.csv')
+    c = os.path.join(workpath, 'static/dataset/../../../static/dataset/test.csv')
     with open(c, 'a', encoding='utf-8-sig', errors='ignore') as csvfile:
         fieldnames = ['name', 'content']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -64,4 +63,4 @@ def PTTCrawler():
     #         print(row['name']+row['content'])
 
 # facebookCrawler()
-PTTCrawler()
+# PTTCrawler()

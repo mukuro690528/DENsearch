@@ -20,8 +20,8 @@ from recommendation.views.cbf.setdatas_views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^wordscoredata/', get_WordScoredata),
-    url(r'^hospitaldata/', get_Hospitaldata),
+    # url(r'^wordscoredata/', get_WordScoredata),
+    # url(r'^hospitaldata/', get_Hospitaldata),
 
     url(r'^survey/$', survey),
 ]
