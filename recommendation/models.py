@@ -39,7 +39,7 @@ class Hospital(models.Model):
         return smart_text(self.name)
 
 class HospitalScore(models.Model):
-    hospital = models.OneToOneField(Hospital, related_name="hospital_detail")
+    hospital = models.OneToOneField(Hospital, related_name="hospital_score")
     total_WOM = models.IntegerField(default=0)
 
     score_ec = models.DecimalField(max_digits=5, decimal_places=3, default=0)  # Economic

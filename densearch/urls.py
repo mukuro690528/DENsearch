@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from recommendation.views.views import survey
 from recommendation.views.cbf.setdatas_views import *
+from recommendation.views.cbf.article_analysis_views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
