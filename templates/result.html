@@ -1,0 +1,33 @@
+{% extends 'module/base.html' %}
+{% block script %}
+
+{% endblock %}
+
+{% block body %}
+    <div align="center">
+        <div class="outer">
+            <div class="banner"></div>
+            <div class="content">
+                <h3>您的推薦為：</h3>
+
+                <table class="table table-bordered" style="width: 70%">
+                    <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>醫院</td>
+                        <td>分數</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>壢新醫院</td>
+                        <td>3.08 分</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <!-- end .content --></div>
+        </div>
+    </div>
+{% endblock %}

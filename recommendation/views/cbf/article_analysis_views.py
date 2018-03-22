@@ -89,12 +89,14 @@ def WriteCSV():
     with open(c, 'a', encoding='utf-8-sig', errors='ignore') as csvfile:
         fieldnames = ['Name', 'Economic', 'Temporal', 'Convenience', 'Sociopsychological', 'Quality', 'Other', 'Total']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()  #新增header，第一次才需使用
+        writer.writeheader()  # 新增header，第一次才需使用
         for h in hospital:
             writer.writerow(
                 {'Name': h.name, 'Economic': h.hospital_score.score_ec, 'Temporal': h.hospital_score.score_tem,
                  'Convenience': h.hospital_score.score_con, 'Sociopsychological': h.hospital_score.score_soc,
                  'Quality': h.hospital_score.score_qua, 'Other': h.hospital_score.score_oth, 'Total': h.hospital_score.total_WOM})
+
+
 
 
 if __name__ == '__main__':
