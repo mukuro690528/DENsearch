@@ -18,6 +18,7 @@ from django.contrib import admin
 from recommendation.views.views import survey
 from recommendation.views.cbf.setdatas_views import *
 from recommendation.views.cbf.personal_recommendation_views import *
+from recommendation.views.cf.fb_login_views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,5 +26,6 @@ urlpatterns = [
     # url(r'^hospitaldata/', get_Hospitaldata),
 
     url(r'^survey/$', survey),
-    url(r'^pr/$', PersonalRecommendation, name='recommendation')
+    url(r'^pr/$', PersonalRecommendation, name='recommendation'),
+    url(r'^login/$', login)
 ]

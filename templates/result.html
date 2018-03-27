@@ -19,15 +19,24 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td>壢新醫院</td>
-                        <td>3.08 分</td>
-                    </tr>
+                    {% for r in rank %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ r.0 }}</td>
+                            <td>{{ r.1 }}</td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
-
-                <!-- end .content --></div>
+                <h3 align="left">說明：</h3>
+                <h5 align="left">感謝您參加本次實驗，接下來請就您的推薦結果來回答以下問卷</h5>
+                <a type="button" href="https://www.facebook.com.tw" class="btn btn-danger">請點我填問卷</a>
+{#                <button type="button" onclick=window.open("www.facebook.com",_blank) value="請點我填問卷">請點我填問卷</button>#}
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
         </div>
     </div>
 {% endblock %}
