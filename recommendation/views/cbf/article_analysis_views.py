@@ -1,10 +1,10 @@
-from recommendation.views.cbf import base
+from recommendation.views import base
 import os, csv
 import jieba
 import jieba.analyse
-from recommendation.models import Hospital, HospitalComment, WordScore, HospitalScore
+from recommendation.models import Hospital, HospitalComment, WordScore
 
-# 將文章分類到各家診所
+# 將口碑文章寫入資料庫：將文章分類到各家診所，口碑文章很亂，沒有診所分類時的狀況
 def ArticalClassification():
     workpath = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     c = os.path.join(workpath, '../static/dataset/pttWOM_Taoyuan.csv')
@@ -27,6 +27,11 @@ def ArticalClassification():
                 if a.exists():
                     print(a[0])
                     HospitalComment.objects.create(hospital_id=a[0].id, content=sentence)
+
+# 將口碑文章寫入資料庫，已將診所分類好的情況（如：從facebook爬出來的資料）
+def ArticalToDB():
+
+    return
 
 
 # 分析口碑文章，建立診所分數

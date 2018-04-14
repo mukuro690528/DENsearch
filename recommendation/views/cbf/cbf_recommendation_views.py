@@ -1,24 +1,8 @@
-from recommendation.views.cbf import base
-from django.shortcuts import render
+from recommendation.views import base
 from recommendation.models import HospitalScore
 from operator import itemgetter
 
-
-def PersonalRecommendation(request):
-    if request.method == "POST":
-        q1 = request.POST['q1']
-        q2 = request.POST['q2']
-        q3 = request.POST['q3']
-        q4 = request.POST['q4']
-        q5 = request.POST['q5']
-        q6 = request.POST['q6']
-
-        print(q1 + ' , ' + q2 + ' , ' + q3 + ' , ' + q4 + ' , ' + q5 + ' , ' + q6)
-        rank = CountScore(q1, q2, q3, q4, q5, q6)
-
-    return render(request, 'result.html', {'rank': rank})
-
-
+# 內容式推薦分數計算
 def CountScore(q1,q2,q3,q4,q5,q6):
     pref = [int(q1), int(q2), int(q3), int(q4), int(q5), int(q6)]
     hospital = HospitalScore.objects.all()
@@ -37,6 +21,5 @@ def CountScore(q1,q2,q3,q4,q5,q6):
     return rank_10
 
 
-
 if __name__ == '__main__':
-    CountScore()
+    CountScore(1, 1, 1, 1, 1)
