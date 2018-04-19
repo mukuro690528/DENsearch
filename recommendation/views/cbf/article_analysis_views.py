@@ -16,9 +16,7 @@ def ArticalClassification():
 
     with open(c, "r", encoding='big5', errors='ignore') as csvfile:
         reader = csv.DictReader(csvfile)
-        # count = 0
         for row in reader:
-            # t = 0
             sentence = row['content']
             print("Input：", sentence)
             tags = jieba.analyse.extract_tags(sentence, topK=10, withWeight=False)
@@ -30,8 +28,16 @@ def ArticalClassification():
 
 # 將口碑文章寫入資料庫，已將診所分類好的情況（如：從facebook爬出來的資料）
 def ArticalToDB():
-
-    return
+    workpath = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    c = os.path.join(workpath, '../static/dataset/fbWOM_Taoyuan.csv')
+    with open(c, "r", encoding='big5', errors='ignore') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            sentence = row['content']
+            hospital = row['hospital']
+            # print("Input：", sentence)
+            h = Hospital.objects.get(name=hospital)
+            HospitalComment.objects.create(hospital_id=h.id, content=sentence)
 
 
 # 分析口碑文章，建立診所分數
@@ -89,7 +95,7 @@ def HospitalScore():
 # 將診所分數寫入CSV
 def WriteCSV():
     workpath = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    c = os.path.join(workpath, '../static/dataset/hospital_score.xlsx')
+    c = os.path.join(workpath, '../static/dataset/hospital_score.csv')
     hospital = Hospital.objects.all()
     with open(c, 'a', encoding='utf-8-sig', errors='ignore') as csvfile:
         fieldnames = ['Name', 'Economic', 'Temporal', 'Convenience', 'Sociopsychological', 'Quality', 'Other', 'Total']
@@ -106,6 +112,7 @@ def WriteCSV():
 
 if __name__ == '__main__':
     # ArticalClassification()
+    # ArticalToDB()
     # HospitalScore()
     # WriteCSV()
     print('ya')

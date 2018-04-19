@@ -1,42 +1,51 @@
-# 從各大網站搜集口碑文章、留言
-
-import facebook
 import requests
 from bs4 import BeautifulSoup
 import csv
 import os
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+
+# 從各大網站搜集口碑文章、留言
 
 #Facebook
 
 def facebookCrawler():
-    token = 'EAACEdEose0cBAKyzveNAmTis2lZAAb62fh0sVCcMbFp9fohjKY4SWuV5KW3UBsqWDYjspsZBSwRaiPtyaThFpjpC0KA99s93KBbkZCaSpBj9cSpLZCgZC5avaEn1MxggbrZBdB8VCqBXbzSMTzYULfWJK0eEh6xLUK8wecUQRVwUl6ZBOo8q7S9jWSw41HiwmALFE9H0Xad7QZDZD'
-    graph = facebook.GraphAPI(access_token=token)
+    driver = webdriver.Chrome('/Users/shan/tools/webdriver/chromedriver')
+    driver.set_window_size(1000, 30000)
+    driver.get('https://www.facebook.com/pg/揚洋牙醫診所-882975585175869/reviews/?ref=page_internal')
+    try:
+        WebDriverWait(driver, 5).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "_34-w"))
+        )
+    except TimeoutException:
+        print('time out')
 
-    search_list = graph.request('search',{'q': '印象牙醫診所', 'type': 'page'})
-    search_id = search_list['data'][0]['id']
-    print(search_list)
-    print(search_list['data'][0])
+    seemore = driver.find_elements_by_class_name('see_more_link')
+    for b in seemore:
+        driver.execute_script("arguments[0].click();", b)
 
-    res = requests.get('https://www.facebook.com/pg/'+search_id+'/reviews/?ref=page_internal')
-    print(res.text)
+    contents = driver.find_elements(By.XPATH, './/p')
 
-
-    # fanpage_info = graph.get_object('pyladies.tw', field='id')  # 指定拿pyladies.tw 這個粉專的id和讚數
-    # print(fanpage_info)  # 印出來看看長什麼樣子，會是JSON格式的資料
-    # print("Fanpage id = ", fanpage_info['id'])
-    # posts = graph.get_connections(id=fanpage_info['id'], connection_name='posts', summary=True)
-    # print(posts)  # 這行會印出一大堆貼文的資料
-    # print("共有", len(posts), "篇PO文")
-
+    workpath = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    c = os.path.join(workpath, '../static/dataset/test.csv')
+    with open(c, 'a', encoding='utf-8-sig', errors='ignore') as csvfile:
+        fieldnames = ['hospital', 'content']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        # writer.writeheader()  #新增header，第一次才需使用
+        for c in contents:
+            writer.writerow({'hospital': '揚洋牙醫診所', 'content': c.text})
+            print(c.text)
 
 
 #PTT
 
 def PTTCrawler():
-    url = 'https://www.ptt.cc/bbs/Taoyuan/M.1516275395.A.27D.html' #選擇要爬的ptt網址，限ptt官方網頁
+    url = 'https://www.ptt.cc/bbs/Taoyuan/M.1516275395.A.27D.html' # 選擇要爬的ptt網址，限ptt官方網頁
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html5lib")
-    # print(res.text)
 
     data = {}
     for item in soup.select('.push'):
@@ -62,5 +71,8 @@ def PTTCrawler():
     #     for row in reader:
     #         print(row['name']+row['content'])
 
-# facebookCrawler()
-# PTTCrawler()
+
+
+if __name__ == '__main__':
+    facebookCrawler()
+    # PTTCrawler()
