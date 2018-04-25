@@ -1,6 +1,18 @@
 {% extends 'module/base.html' %}
 {% block script %}
+    <script language="javascript">
 
+        function check_submit() {
+            for (var i = 1; i <= 5; i++) {
+                if ($("input[name='r" + i + "']:checked").length <= 0) {
+                    alert('還有欄位未填!');
+                    return false;
+                }
+            }
+            document.searchForm.action = "/end/";
+            document.searchForm.submit();
+        }
+    </script>
 {% endblock %}
 
 {% block body %}
@@ -29,9 +41,32 @@
                     </tbody>
                 </table>
                 <h3 align="left">說明：</h3>
-                <h5 align="left">感謝您參加本次實驗，接下來請就您的推薦結果來回答以下問卷</h5>
-                <a type="button" href="https://www.facebook.com.tw" class="btn btn-danger">請點我填問卷</a>
-{#                <button type="button" onclick=window.open("www.facebook.com",_blank) value="請點我填問卷">請點我填問卷</button>#}
+                <h5 align="left">感謝您參加本次實驗，接下來請就您的推薦結果來回答以下問題</h5>
+                <form role="form" action='' method="post" name="searchForm">
+                    {% csrf_token %}
+                    <table class="table table-striped">
+                        <tbody>
+                        {% for r in rank %}
+                            <tr>
+                                <th>”{{ r.0 }}“這個推薦結果我認為</th>
+                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="5.{{ r.0 }}">非常滿意</label></th>
+                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="4.{{ r.0 }}">滿意</label></th>
+                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="3.{{ r.0 }}">普通</label></th>
+                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="2.{{ r.0 }}">不滿意</label></th>
+                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="1.{{ r.0 }}">非常不滿意</label>
+                                </th>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <h1>
+                        <input size="4" type="button" name="Submit" class="myButton" value="   Submit   "
+                               onclick="check_submit();">
+                    </h1>
+                    <br/>
+                    <br/>
+                </form>
                 <br>
                 <br>
                 <br>

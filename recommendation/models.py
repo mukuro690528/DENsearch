@@ -64,3 +64,29 @@ class HospitalComment(models.Model):
 
     def __str__(self):
         return smart_text(self.hospital.name)
+
+class UserData(models.Model):
+    pre1 = models.IntegerField()
+    pre2 = models.IntegerField()
+    pre3 = models.IntegerField()
+    pre4 = models.IntegerField()
+    pre5 = models.IntegerField()
+
+    ena1 = models.IntegerField()
+    ena2 = models.IntegerField()
+    ena3 = models.IntegerField()
+
+    need1 = models.IntegerField()
+    need2 = models.IntegerField()
+    need3 = models.IntegerField()
+
+    service1 = models.IntegerField()
+    service2 = models.IntegerField()
+    service3 = models.IntegerField()
+
+class UserLike(models.Model):
+    user = models.ForeignKey(UserData)
+    hospital = models.ForeignKey(Hospital)
+
+    def __str__(self):
+        return smart_text(self.user) + smart_text(self.hospital.name)

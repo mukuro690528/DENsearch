@@ -26,4 +26,5 @@ urlpatterns = [
 
     url(r'^survey/$', survey),
     url(r'^pr/$', PersonalRecommendation, name='recommendation'),
+    url(r'^end/$', SetUserLike),
 ]

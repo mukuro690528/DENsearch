@@ -1,4 +1,7 @@
+from recommendation.views import base
 import math
+from recommendation.models import UserData
+
 
 def create_trainset():
     """
@@ -6,23 +9,14 @@ def create_trainset():
     :return:
     """
     trainset_tf = dict()
-    trainset_tf[u'C63發表會'] = (15, 25, 0, 5, 8, 3)
-    trainset_tf[u'BMW i8'] = (35, 40, 1, 3, 3, 2)
-    trainset_tf[u'林書豪'] = (5, 0, 35, 50, 0, 0)
-    trainset_tf[u'湖人隊'] = (1, 5, 32, 15, 0, 0)
-    trainset_tf[u'Android 5.0'] = (10, 5, 7, 0, 2, 30)
-    trainset_tf[u'iPhone6'] = (5, 5, 5, 15, 8, 32)
+    user_data = UserData.objects.all()
+    for user in user_data:
+        trainset_tf[user.id] = (
+            user.pre1, user.pre2, user.pre3, user.pre4, user.pre5, user.ena1, user.ena2, user.ena3, user.need1,
+            user.need2, user.need3, user.service1, user.service2, user.service3)
+    print(trainset_tf)
 
-    trainset_class = dict()
-    trainset_class[u'C63發表會'] = 'P'
-    trainset_class[u'BMW i8'] = 'P'
-    trainset_class[u'林書豪'] = 'S'
-    trainset_class[u'湖人隊'] = 'S'
-    trainset_class[u'Android 5.0'] = 'T'
-    trainset_class[u'iPhone6'] = 'T'
-
-    return trainset_tf, trainset_class
-
+    return trainset_tf
 
 def cosine_similarity(v1, v2):
     """
@@ -39,7 +33,7 @@ def cosine_similarity(v1, v2):
 
     return sum_xy / math.sqrt(sum_xx * sum_yy)
 
-def knn_classify(input_tf, trainset_tf, trainset_class, k):
+def knn_classify(input_tf, k):
     """
     執行kNN分類演算法
     :param input_tf: 輸入向量
@@ -50,6 +44,7 @@ def knn_classify(input_tf, trainset_tf, trainset_class, k):
     """
     tf_distance = dict()
     # 計算每個訓練集合特徵關鍵字字詞頻率向量和輸入向量的距離
+    trainset_tf = create_trainset()
 
     print('(1) 計算向量距離')
     for place in trainset_tf.keys():
@@ -57,25 +52,28 @@ def knn_classify(input_tf, trainset_tf, trainset_class, k):
         print('\tTF(%s) = %f' % (place, tf_distance.get(place)))
 
     # 把距離排序，取出k個最近距離的分類
-
-    class_count = dict()
+    sim_user = []
     print('(2) 取K個最近鄰居的分類, k = %d' % k)
     for i, place in enumerate(sorted(tf_distance, key=tf_distance.get, reverse=True)):
-        current_class = trainset_class.get(place)
-        print('\tTF(%s) = %f, class = %s' % (place, tf_distance.get(place), current_class))
-        class_count[current_class] = class_count.get(current_class, 0) + 1
+        print('\tTF(%s) = %f' % (place, tf_distance.get(place)))
+        sim_user.append(str(place))
         if (i + 1) >= k:
             break
 
-    print('(3) K個最近鄰居分類出現頻率最高的分類當作最後分類')
-    input_class = ''
-    for i, c in enumerate(sorted(class_count, key=class_count.get, reverse=True)):
-        if i == 0:
-            input_class = c
-        print('\t%s, %d' % (c, class_count.get(c)))
-    print('(4) 分類結果 = %s' % input_class)
+    return sim_user
+
+
+def test():
+    d = {'a': 1, 'b': 2}
+    for i in d:
+        print(d[i])
+    del d['a']
+    del d['b']
+
+    for i in d:
+        print(d[i])
 
 if __name__ == '__main__':
-    input_tf = (10, 2, 50, 56, 8, 5)
-    trainset_tf, trainset_class = create_trainset()
-    knn_classify(input_tf, trainset_tf, trainset_class, k=3)
+    # input_tf = (1, 2, 1, 2, 2, 3, 1, 3, 2, 1, 1, 2, 1, 2)
+    # sim_user = knn_classify(input_tf, k=5)
+    test()

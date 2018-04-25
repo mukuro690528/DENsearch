@@ -4,8 +4,15 @@
     <script language="javascript">
 
         function check_submit() {
-            for (var i = 1; i <= 5; i++) {
+            var array = ["pre1", "pre2", "pre3", "pre4", "pre5", "ena1", "ena2", "ena3", "need1", "need2", "need3", "service1", "service2", "service3"]
+            for (var i = 1; i <= 6; i++) {
                 if ($("input[name='q" + i + "']:checked").length <= 0) {
+                    alert('還有欄位未填!');
+                    return false;
+                }
+            }
+            for (var i = 1; i <= array.length; i++) {
+                if ($("input[name='" + array[i-1] + "']:checked").length <= 0) {
                     alert('還有欄位未填!');
                     return false;
                 }
@@ -24,13 +31,14 @@
             <div class="content">
                 <table width="20" border="0">
                     <tr>
-                        <td nowrap><font size="6" face="微軟正黑體"><b><font size="5">關於Hosearch</font></b></font></td>
+                        <td nowrap><font size="6" face="微軟正黑體"><b><font size="5">關於Dental care
+                            recommender</font></b></font></td>
                     </tr>
                 </table>
 
                 <table width="70" border="0">
                     <tr>
-                        <td nowrap><font size="4" face="微軟正黑體">Hosearch是一個統整網路上網友口碑結合FaceBook中個人資訊的資訊系統，其主要利用語意分析技<br/>術加上使用者相似度分類來推薦出適合每個人的診所。</font>
+                        <td nowrap><font size="4" face="微軟正黑體">Dental care recommender是一個統整網路上網友口碑結合FaceBook中個人資訊的資訊系統，其<br/>主要利用語意分析技術加上使用者相似度分類來推薦出適合每個人的診所。</font>
                         </td>
                     </tr>
                     <tr>
@@ -44,29 +52,29 @@
 
                 <p>&nbsp;</p>
 
-                <table width="70" border="0">
-                    <tr>
-                        <td nowrap><font size="4" face="微軟正黑體">
-                            <h4>請輸入您想搜尋的條件:</h4>
-                        </font></td>
-                    </tr>
-                </table>
-                <table width="70" border="0">
-                    <tr>
-                        <td nowrap><font size="4" face="微軟正黑體">&nbsp;國家(Country):</font></td>
-                        <td class="style1"><select name="txtarea">
-                            <option value="台灣">台灣</option>
-                        </select></td>
-                        <td nowrap><font size="4" face="微軟正黑體">&nbsp;區域(Area):</font></td>
-                        <td><select name="txtarea">
-                            <option value="台北市">桃園縣</option>
-                        </select></td>
-                        <td nowrap><font size="4" face="微軟正黑體">&nbsp;語言(Languace):</font></td>
-                        <td><select name="txtarea">
-                            <option value="台灣">繁體中文</option>
-                        </select></td>
-                    </tr>
-                </table>
+                {#                <table width="70" border="0">#}
+                {#                    <tr>#}
+                {#                        <td nowrap><font size="4" face="微軟正黑體">#}
+                {#                            <h4>請輸入您想搜尋的條件:</h4>#}
+                {#                        </font></td>#}
+                {#                    </tr>#}
+                {#                </table>#}
+                {#                <table width="70" border="0">#}
+                {#                    <tr>#}
+                {#                        <td nowrap><font size="4" face="微軟正黑體">&nbsp;國家(Country):</font></td>#}
+                {#                        <td class="style1"><select name="txtarea">#}
+                {#                            <option value="台灣">台灣</option>#}
+                {#                        </select></td>#}
+                {#                        <td nowrap><font size="4" face="微軟正黑體">&nbsp;區域(Area):</font></td>#}
+                {#                        <td><select name="txtarea">#}
+                {#                            <option value="台北市">桃園縣</option>#}
+                {#                        </select></td>#}
+                {#                        <td nowrap><font size="4" face="微軟正黑體">&nbsp;語言(Languace):</font></td>#}
+                {#                        <td><select name="txtarea">#}
+                {#                            <option value="台灣">繁體中文</option>#}
+                {#                        </select></td>#}
+                {#                    </tr>#}
+                {#                </table>#}
 
                 <!--<table>
                   <tr>
@@ -78,11 +86,10 @@
                 <table width="70" border="0">
                     <tr>
                         <td nowrap>
-                            <h4>請輸入下列
+                            <h4>一、請輸入下列
                                 <t style="color: red">醫療服務</t>
-                                要素對你選擇診所時的
+                                要素對您選擇診所時的
                                 <t style="color: red">影響程度</t>
-                                ：
                             </h4>
                         </td>
                     </tr>
@@ -133,7 +140,7 @@
                             <th><label class="radio-inline"><input type="radio" name="q5" value="1">非常不重要</label></th>
                         </tr>
                         <tr>
-                            <th>通用</th>
+                            <th>整體品質</th>
                             <th><label class="radio-inline"><input type="radio" name="q6" value="5">非常重要</label></th>
                             <th><label class="radio-inline"><input type="radio" name="q6" value="4">重要</label></th>
                             <th><label class="radio-inline"><input type="radio" name="q6" value="3">普通</label></th>
@@ -143,40 +150,161 @@
                         </tbody>
                     </table>
 
-
                     </br>
                     <table width="70" border="0">
                         <tr>
                             <td><font size="4" face="微軟正黑體">
-                                <crnter>說明:<br>Description:</crnter>
+                                <crnter>說明:</crnter>
                             </font></td>
                         </tr>
                         <tr>
-                            <td nowrap><font size="4" face="微軟正黑體"> 1. 經濟：指對於就醫價格的認知，如收費是否合理等。<br> 1. Economic includes
-                                expenses of medical care, and the like. </font></td>
+                            <td nowrap><font size="4" face="微軟正黑體"> 1. 經濟：指對於就醫價格的認知，如收費是否合理等。</font></td>
                         </tr>
                         <tr>
-                            <td nowrap><font size="4" face="微軟正黑體"> 2. 時間性：指對於就醫時間的認知，如看診等候之時間等。<br> 2. Temporal
-                                includes waiting time for outpatients, and the like.</font></td>
+                            <td nowrap><font size="4" face="微軟正黑體"> 2. 時間性：指對於就醫時間的認知，如看診等候之時間等。</font></td>
                         </tr>
                         <tr>
-                            <td nowrap><font size="4" face="微軟正黑體"> 3. 方便性：指就醫時所感受到的方便性，如醫院距離、停車與掛號制度等。<br> 3.
-                                Convenience includes distance to hospital, parking space, and the like.</font></td>
+                            <td nowrap><font size="4" face="微軟正黑體"> 3. 方便性：指就醫時所感受到的方便性，如醫院距離、停車與掛號制度等。</font></td>
                         </tr>
                         <tr>
-                            <td nowrap><font size="4" face="微軟正黑體"> 4. 社會心理性：指對社會心理性價值之效用認知，如醫師的禮貌、體諒、服務態度、醫病關係等。<br> 4.
-                                Sociopsychological includes bedside manner and physician-patient relationship, and the
-                                like.</font></td>
+                            <td nowrap><font size="4" face="微軟正黑體"> 4. 社會心理性：指對社會心理性價值之效用認知，如醫師的禮貌、體諒、服務態度、醫病關係等。</font>
+                            </td>
                         </tr>
                         <tr>
-                            <td nowrap><font size="4" face="微軟正黑體"> 5. 醫療品質：指對於醫療服務之效用認知，如醫師技術、經歷資格等。<br> 5. Quality of
-                                Care includes physicians' skill and experience, and the like.</font></td>
+                            <td nowrap><font size="4" face="微軟正黑體"> 5. 醫療品質：指對於醫療服務之效用認知，如醫師技術、經歷資格等。</font></td>
+                        </tr>
+                        <tr>
+                            <td nowrap><font size="4" face="微軟正黑體"> 6. 整體品質：指就醫時的綜合性感受，如整體的醫療服務品質。</font></td>
                         </tr>
                     </table>
+
+                    <br/>
+                    <table width="70" border="0">
+                        <tr>
+                            <td nowrap>
+                                <h4>二、請回答以下問題</h4>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th>1. 您的性別為</th>
+                            <th><label class="radio-inline"><input type="radio" name="pre1" value="1">男</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="pre1" value="2">女</label></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>2. 您的年齡為</th>
+                            <th><label class="radio-inline"><input type="radio" name="pre2" value="1">20歲以下</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="pre2" value="2">20~40歲</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="pre2" value="3">40歲以上</label></th>
+                        </tr>
+                        <tr>
+                            <th>3. 請問您的教育程度為</th>
+                            <th><label class="radio-inline"><input type="radio" name="pre3" value="1">高中以下</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="pre3" value="2">大專院校</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="pre3" value="3">研究所以上</label></th>
+                        </tr>
+                        <tr>
+                            <th>4. 請問您的刷牙習慣為</th>
+                            <th><label class="radio-inline"><input type="radio" name="pre4" value="1">1~2次/日</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="pre4" value="2">3次（含）以上/日</label>
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>5. 當您生病時通常您會選擇</th>
+                            <th><label class="radio-inline"><input type="radio" name="pre5" value="1">自行購藥或其他</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="pre5" value="2">看中醫或西醫</label>
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>6. 請問您的月收入約為</th>
+                            <th><label class="radio-inline"><input type="radio" name="ena1" value="1">3萬以下（含3萬）</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="ena1" value="2">3~6萬（含6萬）</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="ena1" value="3">6萬以上</label></th>
+                        </tr>
+                        <tr>
+                            <th>7. 請問您最常使用的交通工具為</th>
+                            <th><label class="radio-inline"><input type="radio" name="ena2" value="1">大眾運輸</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="ena2" value="2">機車</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="ena2" value="3">汽車</label></th>
+                        </tr>
+                        <tr>
+                            <th>8. 有無健保之外的醫療保險</th>
+                            <th><label class="radio-inline"><input type="radio" name="ena3" value="1">有</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="ena3" value="2">無</label></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>9. 是否患有牙齒相關疾病</th>
+                            <th><label class="radio-inline"><input type="radio" name="need1" value="1">有</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="need1" value="2">無</label></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>10. 自覺健康狀況</th>
+                            <th><label class="radio-inline"><input type="radio" name="need2" value="1">好</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="need2" value="2">普通</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="need2" value="3">不好</label></th>
+                        </tr>
+                        <tr>
+                            <th>11. 會不會在意牙齒美觀</th>
+                            <th><label class="radio-inline"><input type="radio" name="need3" value="1">會</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="need3" value="2">不會</label></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>12. 大約多久檢查一次牙齒</th>
+                            <th><label class="radio-inline"><input type="radio" name="service1"
+                                                                   value="1">半年一次或以下</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="service1"
+                                                                   value="2">一年一次或以上</label></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>13. 有無吸菸習慣</th>
+                            <th><label class="radio-inline"><input type="radio" name="service2" value="1">有</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="service2" value="2">無</label></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>14. 有無嚼檳榔習慣</th>
+                            <th><label class="radio-inline"><input type="radio" name="service3" value="1">有</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="service3" value="2">無</label></th>
+                            <th></th>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                    <table width="70" border="0">
+                        <tr>
+                            <td><font size="4" face="微軟正黑體">
+                                <h4>說明:</h4>
+                            </font></td>
+                        </tr>
+                        <tr>
+                            <td nowrap><font size="4" face="微軟正黑體"> 以上問題根據 Andersen Healthcare Utilization Model
+                                來設計，其中包含四大因素：傾向因素、能力
+                                <br/>因素、需要因素、健康行為，本研究根據此四大面向問題而將受測者分群找出與受測者相似的用戶。</font></td>
+                        </tr>
+
+                    </table>
+
                     <h1>
                         <input size="4" type="button" name="Submit" class="myButton" value="   Search   "
                                onclick="check_submit();">
                     </h1>
+                    <br/>
+                    <br/>
                 </form>
 
                 <!-- end .content --></div>
