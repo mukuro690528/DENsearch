@@ -49,11 +49,11 @@
                         {% for r in rank %}
                             <tr>
                                 <th>”{{ r.0 }}“這個推薦結果我認為</th>
-                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="5.{{ r.0 }}">非常滿意</label></th>
-                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="4.{{ r.0 }}">滿意</label></th>
+                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="5.{{ r.0 }}">非常符合我的需求</label></th>
+                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="4.{{ r.0 }}">稍微符合我的需求</label></th>
                                 <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="3.{{ r.0 }}">普通</label></th>
-                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="2.{{ r.0 }}">不滿意</label></th>
-                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="1.{{ r.0 }}">非常不滿意</label>
+                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="2.{{ r.0 }}">有點不符合我的需求</label></th>
+                                <th><label class="radio-inline"><input type="radio" name="r{{ forloop.counter }}" value="1.{{ r.0 }}">非常不符合我的需求</label>
                                 </th>
                             </tr>
                         {% endfor %}

@@ -14,7 +14,6 @@ def create_trainset():
         trainset_tf[user.id] = (
             user.pre1, user.pre2, user.pre3, user.pre4, user.pre5, user.ena1, user.ena2, user.ena3, user.need1,
             user.need2, user.need3, user.service1, user.service2, user.service3)
-    print(trainset_tf)
 
     return trainset_tf
 
@@ -34,46 +33,24 @@ def cosine_similarity(v1, v2):
     return sum_xy / math.sqrt(sum_xx * sum_yy)
 
 def knn_classify(input_tf, k):
-    """
-    執行kNN分類演算法
-    :param input_tf: 輸入向量
-    :param trainset_tf: 訓練集合向量
-    :param trainset_class: 訓練集合分類
-    :param k: 取k個最近鄰居
-    :return:
-    """
     tf_distance = dict()
     # 計算每個訓練集合特徵關鍵字字詞頻率向量和輸入向量的距離
     trainset_tf = create_trainset()
 
-    print('(1) 計算向量距離')
+    # (1) 計算向量距離
     for place in trainset_tf.keys():
         tf_distance[place] = cosine_similarity(trainset_tf.get(place), input_tf)
-        print('\tTF(%s) = %f' % (place, tf_distance.get(place)))
 
     # 把距離排序，取出k個最近距離的分類
+    # (2) 取K個最近鄰居的分類
     sim_user = []
-    print('(2) 取K個最近鄰居的分類, k = %d' % k)
     for i, place in enumerate(sorted(tf_distance, key=tf_distance.get, reverse=True)):
-        print('\tTF(%s) = %f' % (place, tf_distance.get(place)))
         sim_user.append(str(place))
         if (i + 1) >= k:
             break
 
     return sim_user
 
-
-def test():
-    d = {'a': 1, 'b': 2}
-    for i in d:
-        print(d[i])
-    del d['a']
-    del d['b']
-
-    for i in d:
-        print(d[i])
-
 if __name__ == '__main__':
-    # input_tf = (1, 2, 1, 2, 2, 3, 1, 3, 2, 1, 1, 2, 1, 2)
-    # sim_user = knn_classify(input_tf, k=5)
-    test()
+    input_tf = (1, 2, 1, 2, 2, 3, 1, 3, 2, 1, 1, 2, 1, 2)
+    sim_user = knn_classify(input_tf, k=5)

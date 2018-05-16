@@ -54,7 +54,7 @@ def SetUserLike(request):
         r5 = request.POST['r5']
         UserLikeToDB(r1, r2, r3, r4, r5)
 
-        print(r1 + ' , ' + r2 + ' , ' + r3 + ' , ' + r4 + ' , ' + r5)
+        # print(r1 + ' , ' + r2 + ' , ' + r3 + ' , ' + r4 + ' , ' + r5)
 
     return render(request, 'thankyou.html')
 
