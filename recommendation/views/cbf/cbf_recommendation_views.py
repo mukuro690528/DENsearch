@@ -16,7 +16,7 @@ def CountScore(q1, q2, q3, q4, q5, q6, c, cf_list):
             if h.hospital.name == l:
                 p_score = p_score + 10 * cf_list[l]
         if p_score != 0:
-            rank.append((h.hospital.name, p_score, h.total_WOM))
+            rank.append((h.hospital.name, p_score, h.total_WOM, h.hospital_id))
 
 
     rank.sort(key=itemgetter(1, 2), reverse=True)
@@ -24,7 +24,7 @@ def CountScore(q1, q2, q3, q4, q5, q6, c, cf_list):
         # print(rank[i][0] + '：' + str(rank[i][1]))
         # s = round(((rank[i][1] - rank[c+1][1]) / (rank[0][1] - rank[c+1][1])) * 10, 2)
         s = round((rank[i][1] / rank[0][1]) * 10, 2)
-        rank_c.append((rank[i][0], str(s)))
+        rank_c.append((rank[i][0], str(s), rank[i][3]))
 
     return rank_c
 

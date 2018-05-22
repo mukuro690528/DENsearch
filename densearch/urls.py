@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from recommendation.views.views import survey
+from recommendation.views.views import survey, detail
 from recommendation.views.cbf.setdatas_views import *
 from recommendation.views.personal_recommendation_views import *
 
@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^survey/$', survey),
     url(r'^pr/$', PersonalRecommendation, name='recommendation'),
     url(r'^end/$', SetUserLike),
+    url(r'^pr/detail/(?P<id>\d+)/$', detail, name='detail'),
 ]

@@ -28,6 +28,7 @@
                         <td>#</td>
                         <td>醫院</td>
                         <td>分數</td>
+                        <td>推薦原因</td>
                     </tr>
                     </thead>
                     <tbody>
@@ -36,6 +37,7 @@
                             <td>{{ forloop.counter }}</td>
                             <td>{{ r.0 }}</td>
                             <td>{{ r.1 }}</td>
+                            <td><a href="/pr/detail/{{ r.2 }}">詳細資訊</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

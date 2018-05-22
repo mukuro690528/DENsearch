@@ -1,0 +1,29 @@
+{% extends 'module/base.html' %}
+{% block script %}
+{% endblock %}
+
+{% block body %}
+    <div align="center">
+        <div class="outer">
+            <div class="banner"></div>
+            <div class="content">
+                <table class="table table-bordered" style="width: 70%">
+                    <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>網路口碑</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for c in comment %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ c.content }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
