@@ -12,7 +12,7 @@
                 }
             }
             for (var i = 1; i <= array.length; i++) {
-                if ($("input[name='" + array[i-1] + "']:checked").length <= 0) {
+                if ($("input[name='" + array[i - 1] + "']:checked").length <= 0) {
                     alert('還有欄位未填!');
                     return false;
                 }
@@ -52,44 +52,17 @@
 
                 <p>&nbsp;</p>
 
-                {#                <table width="70" border="0">#}
-                {#                    <tr>#}
-                {#                        <td nowrap><font size="4" face="微軟正黑體">#}
-                {#                            <h4>請輸入您想搜尋的條件:</h4>#}
-                {#                        </font></td>#}
-                {#                    </tr>#}
-                {#                </table>#}
-                {#                <table width="70" border="0">#}
-                {#                    <tr>#}
-                {#                        <td nowrap><font size="4" face="微軟正黑體">&nbsp;國家(Country):</font></td>#}
-                {#                        <td class="style1"><select name="txtarea">#}
-                {#                            <option value="台灣">台灣</option>#}
-                {#                        </select></td>#}
-                {#                        <td nowrap><font size="4" face="微軟正黑體">&nbsp;區域(Area):</font></td>#}
-                {#                        <td><select name="txtarea">#}
-                {#                            <option value="台北市">桃園縣</option>#}
-                {#                        </select></td>#}
-                {#                        <td nowrap><font size="4" face="微軟正黑體">&nbsp;語言(Languace):</font></td>#}
-                {#                        <td><select name="txtarea">#}
-                {#                            <option value="台灣">繁體中文</option>#}
-                {#                        </select></td>#}
-                {#                    </tr>#}
-                {#                </table>#}
-
-                <!--<table>
-                  <tr>
-                      <td><font size="4" face="微軟正黑體" color=red><center>註:由於此系統為測試版本，因此僅以中壢市為測試區域。<br>NOTE: This system is a beta version, only Chungli City area for testing.</center></font></td>
-                  </tr>
-                </table>-->
-
                 <p></p>
                 <table width="70" border="0">
                     <tr>
                         <td nowrap>
-                            <h4>一、請輸入下列
-                                <t style="color: red">醫療服務</t>
-                                要素對您選擇診所時的
-                                <t style="color: red">影響程度</t>
+                            {#                            <h4>一、請輸入下列#}
+                            {#                                <t style="color: red">醫療服務</t>#}
+                            {#                                要素對您選擇診所時的#}
+                            {#                                <t style="color: red">影響程度</t>#}
+                            {#                            </h4>#}
+                            <h4>
+                                (1) Please input your preference for each service dimension of a clinic.
                             </h4>
                         </td>
                     </tr>
@@ -99,53 +72,131 @@
                     {% csrf_token %}
                     <table class="table table-striped">
                         <tbody>
+                        {#                        <tr>#}
+                        {#                            <th>經濟<br/>Economic</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q1" value="5">非常重要<br/>Very Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q1" value="4">重要<br/>Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q1" value="3">普通<br/>Moderately Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q1" value="2">不重要<br/>Slightly Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q1" value="1">非常不重要<br/>Not Important</label></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>經濟</th>
-                            <th><label class="radio-inline"><input type="radio" name="q1" value="5">非常重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q1" value="4">重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q1" value="3">普通</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q1" value="2">不重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q1" value="1">非常不重要</label></th>
+                            <th>Economic</th>
+                            <th><label class="radio-inline"><input type="radio" name="q1" value="5">Very
+                                Important</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="q1" value="4">Important</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="q1" value="3">Moderately Important</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="q1" value="2">Slightly
+                                Important</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="q1" value="1">Not
+                                Important</label></th>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <th>時間<br/>Temporal</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q2" value="5">非常重要<br/>Very Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q2" value="4">重要<br/>Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q2" value="3">普通<br/>Moderately Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q2" value="2">不重要<br/>Slightly Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q2" value="1">非常不重要<br/>Not Important</label></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>時間</th>
-                            <th><label class="radio-inline"><input type="radio" name="q2" value="5">非常重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q2" value="4">重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q2" value="3">普通</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q2" value="2">不重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q2" value="1">非常不重要</label></th>
+                            <th>Temporal</th>
+                            <th><label class="radio-inline"><input type="radio" name="q2" value="5">Very
+                                Important</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="q2" value="4">Important</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="q2" value="3">Moderately Important</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="q2" value="2">Slightly
+                                Important</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="q2" value="1">Not
+                                Important</label></th>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <th>方便性<br/>Convenience</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q3" value="5">非常重要<br/>Very Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q3" value="4">重要<br/>Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q3" value="3">普通<br/>Moderately Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q3" value="2">不重要<br/>Slightly Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q3" value="1">非常不重要<br/>Not Important</label></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>方便性</th>
-                            <th><label class="radio-inline"><input type="radio" name="q3" value="5">非常重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q3" value="4">重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q3" value="3">普通</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q3" value="2">不重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q3" value="1">非常不重要</label></th>
+                            <th>Convenience</th>
+                            <th><label class="radio-inline"><input type="radio" name="q3" value="5">Very
+                                Important</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="q3" value="4">Important</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="q3" value="3">Moderately Important</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="q3" value="2">Slightly
+                                Important</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="q3" value="1">Not
+                                Important</label></th>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <th>社會心理性<br/>Sosiopsychological</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q4" value="5">非常重要<br/>Very Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q4" value="4">重要<br/>Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q4" value="3">普通<br/>Moderately Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q4" value="2">不重要<br/>Slightly Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q4" value="1">非常不重要<br/>Not Important</label></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>社會心理性</th>
-                            <th><label class="radio-inline"><input type="radio" name="q4" value="5">非常重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q4" value="4">重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q4" value="3">普通</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q4" value="2">不重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q4" value="1">非常不重要</label></th>
+                            <th>Sosiopsychological</th>
+                            <th><label class="radio-inline"><input type="radio" name="q4" value="5">Very
+                                Important</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="q4" value="4">Important</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="q4" value="3">Moderately Important</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="q4" value="2">Slightly
+                                Important</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="q4" value="1">Not
+                                Important</label></th>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <th>醫療品質<br/>Quality of Care</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q5" value="5">非常重要<br/>Very Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q5" value="4">重要<br/>Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q5" value="3">普通<br/>Moderately Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q5" value="2">不重要<br/>Slightly Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q5" value="1">非常不重要<br/>Not Important</label></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>醫療品質</th>
-                            <th><label class="radio-inline"><input type="radio" name="q5" value="5">非常重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q5" value="4">重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q5" value="3">普通</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q5" value="2">不重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q5" value="1">非常不重要</label></th>
+                            <th>Quality of Care</th>
+                            <th><label class="radio-inline"><input type="radio" name="q5" value="5">Very
+                                Important</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="q5" value="4">Important</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="q5" value="3">Moderately Important</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="q5" value="2">Slightly
+                                Important</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="q5" value="1">Not
+                                Important</label></th>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <th>整體品質<br/>Overall quality</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q6" value="5">非常重要<br/>Very Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q6" value="4">重要<br/>Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q6" value="3">普通<br/>Moderately Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q6" value="2">不重要<br/>Slightly Important</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="q6" value="1">非常不重要<br/>Not Important</label></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>整體品質</th>
-                            <th><label class="radio-inline"><input type="radio" name="q6" value="5">非常重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q6" value="4">重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q6" value="3">普通</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q6" value="2">不重要</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="q6" value="1">非常不重要</label></th>
+                            <th>Overall quality</th>
+                            <th><label class="radio-inline"><input type="radio" name="q6" value="5">Very
+                                Important</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="q6" value="4">Important</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="q6" value="3">Moderately Important</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="q6" value="2">Slightly
+                                Important</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="q6" value="1">Not
+                                Important</label></th>
                         </tr>
                         </tbody>
                     </table>
@@ -154,27 +205,53 @@
                     <table width="70" border="0">
                         <tr>
                             <td><font size="4" face="微軟正黑體">
-                                <crnter>說明:</crnter>
+                                {#                                <crnter>說明:</crnter>#}
+                                <crnter>Description:</crnter>
                             </font></td>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <td nowrap><font size="4" face="微軟正黑體"> 1. 經濟：指對於就醫價格的認知，如收費是否合理等。</font></td>#}
+                        {#                        </tr>#}
+                        {#                        <tr>#}
+                        {#                            <td nowrap><font size="4" face="微軟正黑體"> 2. 時間性：指對於就醫時間的認知，如看診等候之時間等。</font></td>#}
+                        {#                        </tr>#}
+                        {#                        <tr>#}
+                        {#                            <td nowrap><font size="4" face="微軟正黑體"> 3. 方便性：指就醫時所感受到的方便性，如醫院距離、停車與掛號制度等。</font></td>#}
+                        {#                        </tr>#}
+                        {#                        <tr>#}
+                        {#                            <td nowrap><font size="4" face="微軟正黑體"> 4. 社會心理性：指對社會心理性價值之效用認知，如醫師的禮貌、體諒、服務態度、醫病關係等。</font>#}
+                        {#                            </td>#}
+                        {#                        </tr>#}
+                        {#                        <tr>#}
+                        {#                            <td nowrap><font size="4" face="微軟正黑體"> 5. 醫療品質：指對於醫療服務之效用認知，如醫師技術、經歷資格等。</font></td>#}
+                        {#                        </tr>#}
+                        {#                        <tr>#}
+                        {#                            <td nowrap><font size="4" face="微軟正黑體"> 6. 整體品質：指就醫時的綜合性感受，如整體的醫療服務品質。</font></td>#}
+                        {#                        </tr>#}
                         <tr>
-                            <td nowrap><font size="4" face="微軟正黑體"> 1. 經濟：指對於就醫價格的認知，如收費是否合理等。</font></td>
+                            <td nowrap><font size="4" face="微軟正黑體"> 1. Economic includes expenses of medical care, and
+                                the like.</font></td>
                         </tr>
                         <tr>
-                            <td nowrap><font size="4" face="微軟正黑體"> 2. 時間性：指對於就醫時間的認知，如看診等候之時間等。</font></td>
+                            <td nowrap><font size="4" face="微軟正黑體"> 2. Temporal includes waiting time for outpatients,
+                                and the like.</font></td>
                         </tr>
                         <tr>
-                            <td nowrap><font size="4" face="微軟正黑體"> 3. 方便性：指就醫時所感受到的方便性，如醫院距離、停車與掛號制度等。</font></td>
+                            <td nowrap><font size="4" face="微軟正黑體"> 3. Convenience includes distance to hospital,
+                                parking space, and the like.</font></td>
                         </tr>
                         <tr>
-                            <td nowrap><font size="4" face="微軟正黑體"> 4. 社會心理性：指對社會心理性價值之效用認知，如醫師的禮貌、體諒、服務態度、醫病關係等。</font>
+                            <td nowrap><font size="4" face="微軟正黑體"> 4. Sociopsychological includes bedside manner and
+                                physician-patient relationship, and the like.</font>
                             </td>
                         </tr>
                         <tr>
-                            <td nowrap><font size="4" face="微軟正黑體"> 5. 醫療品質：指對於醫療服務之效用認知，如醫師技術、經歷資格等。</font></td>
+                            <td nowrap><font size="4" face="微軟正黑體"> 5. Quality of Care includes physicians' skill and
+                                experience, and the like.</font></td>
                         </tr>
                         <tr>
-                            <td nowrap><font size="4" face="微軟正黑體"> 6. 整體品質：指就醫時的綜合性感受，如整體的醫療服務品質。</font></td>
+                            <td nowrap><font size="4" face="微軟正黑體"> 6. Overall quality includes overall quality of
+                                medical services, and the like.</font></td>
                         </tr>
                     </table>
 
@@ -182,103 +259,217 @@
                     <table width="70" border="0">
                         <tr>
                             <td nowrap>
-                                <h4>二、請回答以下問題</h4>
+                                {#                                <h4>二、請回答以下問題</h4>#}
+                                <h4>(2) Please answer the following questions.</h4>
                             </td>
                         </tr>
                     </table>
                     <table class="table table-striped">
                         <tbody>
+                        {#                        <tr>#}
+                        {#                            <th>1. 您的性別為<br/>1. Gender</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="pre1" value="1">男<br/>Male</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="pre1" value="2">女<br/>Female</label></th>#}
+                        {#                            <th></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>1. 您的性別為</th>
-                            <th><label class="radio-inline"><input type="radio" name="pre1" value="1">男</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="pre1" value="2">女</label></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th>2. 您的年齡為</th>
-                            <th><label class="radio-inline"><input type="radio" name="pre2" value="1">20歲以下</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="pre2" value="2">20~40歲</label>
-                            </th>
-                            <th><label class="radio-inline"><input type="radio" name="pre2" value="3">40歲以上</label></th>
-                        </tr>
-                        <tr>
-                            <th>3. 請問您的教育程度為</th>
-                            <th><label class="radio-inline"><input type="radio" name="pre3" value="1">高中以下</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="pre3" value="2">大專院校</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="pre3" value="3">研究所以上</label></th>
-                        </tr>
-                        <tr>
-                            <th>4. 請問您的刷牙習慣為</th>
-                            <th><label class="radio-inline"><input type="radio" name="pre4" value="1">1~2次/日</label>
-                            </th>
-                            <th><label class="radio-inline"><input type="radio" name="pre4" value="2">3次（含）以上/日</label>
+                            <th>1. Gender</th>
+                            <th><label class="radio-inline"><input type="radio" name="pre1" value="1">Male</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="pre1" value="2">Female</label>
                             </th>
                             <th></th>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <th>2. 您的年齡為<br/>2. Age Group</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="pre2" value="1">20歲以下<br/>20 or below</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="pre2" value="2">20~40歲<br/>20-40</label>#}
+                        {#                            </th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="pre2" value="3">40歲以上<br/>40 or above</label></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>5. 當您生病時通常您會選擇</th>
-                            <th><label class="radio-inline"><input type="radio" name="pre5" value="1">自行購藥或其他</label>
+                            <th>2. Age Group</th>
+                            <th><label class="radio-inline"><input type="radio" name="pre2" value="1">20 or
+                                below</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="pre2" value="2">20-40</label>
                             </th>
-                            <th><label class="radio-inline"><input type="radio" name="pre5" value="2">看中醫或西醫</label>
+                            <th><label class="radio-inline"><input type="radio" name="pre2" value="3">40 or
+                                above</label></th>
+                        </tr>
+                        {#                        <tr>#}
+                        {#                            <th>3. 請問您的教育程度為<br/>3. Education</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="pre3" value="1">高中以下<br/>Senior high school or below</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="pre3" value="2">大專院校<br/>University</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="pre3" value="3">研究所以上<br/>Graduate institute or above</label></th>#}
+                        {#                        </tr>#}
+                        <tr>
+                            <th>3. Education</th>
+                            <th><label class="radio-inline"><input type="radio" name="pre3" value="1">Senior high school
+                                or below</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="pre3" value="2">University</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="pre3" value="3">Graduate institute
+                                or above</label></th>
+                        </tr>
+                        {#                        <tr>#}
+                        {#                            <th>4. 請問您的刷牙習慣為<br/>4. Brushing habit</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="pre4" value="1">1~2次/日<br/>1-2 times/day</label>#}
+                        {#                            </th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="pre4" value="2">3次（含）以上/日<br/>3 times or above/day</label>#}
+                        {#                            </th>#}
+                        {#                            <th></th>#}
+                        {#                        </tr>#}
+                        <tr>
+                            <th>4. Brushing habit</th>
+                            <th><label class="radio-inline"><input type="radio" name="pre4" value="1">1-2
+                                times/day</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="pre4" value="2">3 times or
+                                above/day</label>
                             </th>
                             <th></th>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <th>5. 當您生病時通常您會選擇<br/>5. What do you do when you are sick?</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="pre5" value="1">自行購藥或其他<br/>Buy medicine or other</label>#}
+                        {#                            </th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="pre5" value="2">看中醫或西醫<br/>See Chinese medicine or Western medicine</label>#}
+                        {#                            </th>#}
+                        {#                            <th></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>6. 請問您的月收入約為</th>
-                            <th><label class="radio-inline"><input type="radio" name="ena1" value="1">3萬以下（含3萬）</label>
+                            <th>5. What do you do when you are sick?</th>
+                            <th><label class="radio-inline"><input type="radio" name="pre5" value="1">Buy medicine or
+                                other</label>
                             </th>
-                            <th><label class="radio-inline"><input type="radio" name="ena1" value="2">3~6萬（含6萬）</label>
+                            <th><label class="radio-inline"><input type="radio" name="pre5" value="2">See Chinese
+                                medicine or Western medicine</label>
                             </th>
-                            <th><label class="radio-inline"><input type="radio" name="ena1" value="3">6萬以上</label></th>
-                        </tr>
-                        <tr>
-                            <th>7. 請問您最常使用的交通工具為</th>
-                            <th><label class="radio-inline"><input type="radio" name="ena2" value="1">大眾運輸</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="ena2" value="2">機車</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="ena2" value="3">汽車</label></th>
-                        </tr>
-                        <tr>
-                            <th>8. 有無健保之外的醫療保險</th>
-                            <th><label class="radio-inline"><input type="radio" name="ena3" value="1">有</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="ena3" value="2">無</label></th>
                             <th></th>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <th>6. 請問您的月收入約為<br/>6. What is your monthly income?</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="ena1" value="1">3萬以下（含3萬）<br/>Less than 30,000</label>#}
+                        {#                            </th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="ena1" value="2">3~6萬（含6萬）<br/>30,000-60,000</label>#}
+                        {#                            </th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="ena1" value="3">6萬以上<br/>More than 60,000</label></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>9. 是否患有牙齒相關疾病</th>
-                            <th><label class="radio-inline"><input type="radio" name="need1" value="1">有</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="need1" value="2">無</label></th>
+                            <th>6. What is your monthly income?</th>
+                            <th><label class="radio-inline"><input type="radio" name="ena1" value="1">Less than
+                                30,000</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="ena1"
+                                                                   value="2">30,000-60,000</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="ena1" value="3">More than
+                                60,000</label></th>
+                        </tr>
+                        {#                        <tr>#}
+                        {#                            <th>7. 請問您最常使用的交通工具為<br/>7. What transportation usually use?</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="ena2" value="1">大眾運輸<br/>Public transportation</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="ena2" value="2">機車<br/>Motorcycle</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="ena2" value="3">汽車<br/>Car</label></th>#}
+                        {#                        </tr>#}
+                        <tr>
+                            <th>7. What transportation usually use?</th>
+                            <th><label class="radio-inline"><input type="radio" name="ena2" value="1">Public
+                                transportation</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="ena2" value="2">Motorcycle</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="ena2" value="3">Car</label></th>
+                        </tr>
+                        {#                        <tr>#}
+                        {#                            <th>8. 有無健保之外的醫療保險<br/>8. Do you have any insurance other than National Health Insurance?</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="ena3" value="1">有<br/>Yes</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="ena3" value="2">無<br/>No</label></th>#}
+                        {#                            <th></th>#}
+                        {#                        </tr>#}
+                        <tr>
+                            <th>8. Do you have any insurance other than National Health Insurance?</th>
+                            <th><label class="radio-inline"><input type="radio" name="ena3" value="1">Yes</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="ena3" value="2">No</label></th>
                             <th></th>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <th>9. 是否患有牙齒相關疾病<br/>9. Do you have any dental related diseases?</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="need1" value="1">有<br/>Yes</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="need1" value="2">無<br/>No</label></th>#}
+                        {#                            <th></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>10. 自覺健康狀況</th>
-                            <th><label class="radio-inline"><input type="radio" name="need2" value="1">好</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="need2" value="2">普通</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="need2" value="3">不好</label></th>
-                        </tr>
-                        <tr>
-                            <th>11. 會不會在意牙齒美觀</th>
-                            <th><label class="radio-inline"><input type="radio" name="need3" value="1">會</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="need3" value="2">不會</label></th>
+                            <th>9. Do you have any dental related diseases?</th>
+                            <th><label class="radio-inline"><input type="radio" name="need1" value="1">Yes</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="need1" value="2">No</label></th>
                             <th></th>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <th>10. 自覺健康狀況<br/>10. What do you think of your health?</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="need2" value="1">好<br/>Good</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="need2" value="2">普通<br/>So-so</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="need2" value="3">不好<br/>Bad</label></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>12. 大約多久檢查一次牙齒</th>
+                            <th>10. What do you think of your health?</th>
+                            <th><label class="radio-inline"><input type="radio" name="need2" value="1">Good</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="need2" value="2">So-so</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="need2" value="3">Bad</label></th>
+                        </tr>
+                        {#                        <tr>#}
+                        {#                            <th>11. 會不會在意牙齒美觀<br/>11. Do you care about the beauty of your teeth?</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="need3" value="1">會<br/>Yes</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="need3" value="2">不會<br/>No</label></th>#}
+                        {#                            <th></th>#}
+                        {#                        </tr>#}
+                        <tr>
+                            <th>11. Do you care about the beauty of your teeth?</th>
+                            <th><label class="radio-inline"><input type="radio" name="need3" value="1">Yes</label></th>
+                            <th><label class="radio-inline"><input type="radio" name="need3" value="2">No</label></th>
+                            <th></th>
+                        </tr>
+                        {#                        <tr>#}
+                        {#                            <th>12. 大約多久檢查一次牙齒<br/>12. How often do you check-up your teeth?</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="service1"#}
+                        {#                                                                   value="1">半年一次或以下<br/>semi-annual or below</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="service1"#}
+                        {#                                                                   value="2">一年一次或以上<br/>once a year or above</label></th>#}
+                        {#                            <th></th>#}
+                        {#                        </tr>#}
+                        <tr>
+                            <th>12. How often do you check-up your teeth?</th>
                             <th><label class="radio-inline"><input type="radio" name="service1"
-                                                                   value="1">半年一次或以下</label></th>
+                                                                   value="1">semi-annual or below</label></th>
                             <th><label class="radio-inline"><input type="radio" name="service1"
-                                                                   value="2">一年一次或以上</label></th>
+                                                                   value="2">once a year or above</label></th>
                             <th></th>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <th>13. 有無吸菸習慣<br/>13. Do you have a smoking habit?</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="service2" value="1">有<br/>Yes</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="service2" value="2">無<br/>No</label></th>#}
+                        {#                            <th></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>13. 有無吸菸習慣</th>
-                            <th><label class="radio-inline"><input type="radio" name="service2" value="1">有</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="service2" value="2">無</label></th>
+                            <th>13. Do you have a smoking habit?</th>
+                            <th><label class="radio-inline"><input type="radio" name="service2" value="1">Yes</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="service2" value="2">No</label>
+                            </th>
                             <th></th>
                         </tr>
+                        {#                        <tr>#}
+                        {#                            <th>14. 有無嚼檳榔習慣<br/>14. Do you have the habit of eating betel nut?</th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="service3" value="1">有<br/>Yes</label></th>#}
+                        {#                            <th><label class="radio-inline"><input type="radio" name="service3" value="2">無<br/>No</label></th>#}
+                        {#                            <th></th>#}
+                        {#                        </tr>#}
                         <tr>
-                            <th>14. 有無嚼檳榔習慣</th>
-                            <th><label class="radio-inline"><input type="radio" name="service3" value="1">有</label></th>
-                            <th><label class="radio-inline"><input type="radio" name="service3" value="2">無</label></th>
+                            <th>14. Do you have the habit of eating betel nut?</th>
+                            <th><label class="radio-inline"><input type="radio" name="service3" value="1">Yes</label>
+                            </th>
+                            <th><label class="radio-inline"><input type="radio" name="service3" value="2">No</label>
+                            </th>
                             <th></th>
                         </tr>
 
